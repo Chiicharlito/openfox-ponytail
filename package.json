@@ -1,0 +1,39 @@
+{
+  "name": "openfox-ponytail",
+  "version": "0.1.0",
+  "description": "Community plugin integrating Ponytail into OpenFox.",
+  "repository": {"type": "git", "url": "git+https://github.com/Chiicharlito/openfox-ponytail.git"},
+  "homepage": "https://github.com/Chiicharlito/openfox-ponytail#readme",
+  "bugs": {"url": "https://github.com/Chiicharlito/openfox-ponytail/issues"},
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "npm@11.19.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "resources", "vendor", "docs", "ATTRIBUTION.md", "LICENSE"],
+  "engines": {"node": ">=24.21.0"},
+  "openfox": {
+    "apiVersion": 2,
+    "entry": "./dist/index.js",
+    "displayName": "Ponytail (community)",
+    "description": "Ponytail rules, project levels and read-only diagnostics. Community integration.",
+    "capabilities": ["settings", "transforms", "commands", "skills"]
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import ./test/strict-console.mjs --test test/*.test.mjs",
+    "lint": "eslint . --max-warnings=0",
+    "test:integration": "node --import ./test/strict-console.mjs --test test/integration/*.test.mjs",
+    "check": "npm run build && npm run test && npm run typecheck && npm run lint",
+    "prepack": "npm run check"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.2",
+    "eslint": "10.12.0",
+    "openfox": "2.0.161",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1"
+  }
+}
